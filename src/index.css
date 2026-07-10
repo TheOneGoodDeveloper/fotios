@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  /* Option 3: The Fotios Signature (Direct from Logo) */
+  --color-gold: #D4AF37; /* Metallic Gold matching the 'O's and the swoosh in the logo */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F7F7F7;
+  --color-text-primary: #1A1A1A; /* Deep Charcoal matching the logo background */
+  --color-text-secondary: #666666;
+  --color-border: #E5E5E5;
+  
+  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clune uses geometric sans-serif */
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-bg-primary text-text-primary overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
