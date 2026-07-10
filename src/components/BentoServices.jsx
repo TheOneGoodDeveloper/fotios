@@ -44,6 +44,8 @@ export default function BentoServices() {
           <motion.div 
             key={idx}
             variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 1.02 }}
             className="group cursor-pointer"
           >
             <div className="relative overflow-hidden aspect-[4/3] mb-6">
