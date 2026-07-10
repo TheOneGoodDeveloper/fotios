@@ -63,8 +63,8 @@ export default function StepsSection() {
             <motion.div 
               key={idx} 
               variants={itemVariants} 
-              whileHover="hover"
-              whileTap="hover"
+              whileInView="hover"
+              viewport={{ margin: "-25% 0px -25% 0px" }}
               className="relative flex flex-col items-center bg-bg-secondary cursor-pointer"
             >
               <motion.div variants={numberVariants} className="text-8xl font-heading font-bold text-text-primary mb-2 relative z-10 bg-bg-secondary px-6">
