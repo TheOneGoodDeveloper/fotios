@@ -48,6 +48,17 @@ export default function StepsSection() {
             />
           </div>
 
+          {/* Animated Connecting Line (Mobile Only) */}
+          <div className="absolute top-[5%] left-1/2 w-1 h-[90%] bg-border block md:hidden -z-10 -translate-x-1/2">
+            <motion.div 
+              initial={{ height: "0%" }}
+              whileInView={{ height: "100%" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+              className="w-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+            />
+          </div>
+
           {steps.map((step, idx) => (
             <motion.div 
               key={idx} 
