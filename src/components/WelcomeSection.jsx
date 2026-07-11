@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
+import mapImg from '../assets/uae_ksa_map.png';
 
 const Counter = ({ from, to, duration = 2, suffix = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -56,7 +57,7 @@ export default function WelcomeSection() {
           {/* Stylized UAE/KSA Map Graphic */}
           <div className="w-full mt-auto relative opacity-90 mix-blend-lighten grayscale-[50%]">
             <img 
-              src="/uae_ksa_map.png" 
+              src={mapImg} 
               alt="UAE & KSA Regional Reach" 
               className="w-full h-[400px] object-cover rounded-xl"
             />
