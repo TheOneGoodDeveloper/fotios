@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import MagneticButton from './MagneticButton';
+import logoImg from '../assets/fotios-infinite-bg.png';
 
 export default function Header() {
   const { scrollY } = useScroll();
@@ -28,7 +29,7 @@ export default function Header() {
     >
       <MagneticButton>
         <a href="/" className="flex items-center">
-          <img src="/fotios-infinite-bg.png" alt="Fotios Infinite Solutions" className="h-8 md:h-12 object-contain" />
+          <img src={logoImg} alt="Fotios Infinite Solutions" className="h-8 md:h-12 object-contain" />
         </a>
       </MagneticButton>
       
