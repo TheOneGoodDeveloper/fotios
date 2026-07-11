@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
-  { num: "1", title: "Book", desc: "Give us your exact date & time when you want us." },
-  { num: "2", title: "Schedule", desc: "Contact us at times that are convenient for you." },
+  { num: "1", title: "Book", desc: "Share your need and information with us." },
+  { num: "2", title: "Schedule", desc: "Schedule a time for us to attend to you." },
   { num: "3", title: "Relax", desc: "Our expert team will do the rest and give it back with a new smile." }
 ];
 

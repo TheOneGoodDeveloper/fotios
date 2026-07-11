@@ -1,6 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 import { Megaphone, Users, ThumbsUp } from 'lucide-react';
+
+const Counter = ({ from, to, duration = 2, suffix = "", delay = 0 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState(from);
+
+  useEffect(() => {
+    if (isInView) {
+      // Small timeout to allow the fade-in stagger to happen before counting
+      const timeout = setTimeout(() => {
+        const controls = animate(from, to, {
+          duration: duration,
+          ease: "easeOut",
+          onUpdate: (value) => {
+            setDisplayValue(Math.floor(value));
+          }
+        });
+        return controls.stop;
+      }, delay * 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [isInView, from, to, duration, delay]);
+
+  return <span ref={ref}>{displayValue}{suffix}</span>;
+};
 
 export default function WelcomeSection() {
   const textVariants = {
@@ -14,7 +39,7 @@ export default function WelcomeSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         className="max-w-5xl mx-auto text-center"
       >
         <motion.span variants={textVariants} className="uppercase tracking-[4px] text-text-secondary font-bold text-xs block mb-8">
@@ -39,7 +64,9 @@ export default function WelcomeSection() {
           <motion.div variants={textVariants} className="flex flex-col items-center">
             <div className="flex items-center gap-4 text-gold mb-6">
               <Megaphone size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">500+</span>
+              <span className="text-6xl md:text-7xl font-heading font-bold">
+                <Counter from={0} to={500} suffix="+" delay={0.2} />
+              </span>
             </div>
             <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Exhibition Stands</span>
           </motion.div>
@@ -47,7 +74,9 @@ export default function WelcomeSection() {
           <motion.div variants={textVariants} className="flex flex-col items-center">
             <div className="flex items-center gap-4 text-gold mb-6">
               <Users size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">300+</span>
+              <span className="text-6xl md:text-7xl font-heading font-bold">
+                <Counter from={0} to={300} suffix="+" delay={0.4} />
+              </span>
             </div>
             <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customers</span>
           </motion.div>
@@ -55,7 +84,9 @@ export default function WelcomeSection() {
           <motion.div variants={textVariants} className="flex flex-col items-center">
             <div className="flex items-center gap-4 text-gold mb-6">
               <ThumbsUp size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">100%</span>
+              <span className="text-6xl md:text-7xl font-heading font-bold">
+                <Counter from={0} to={100} suffix="%" delay={0.6} />
+              </span>
             </div>
             <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customer Satisfaction</span>
           </motion.div>
