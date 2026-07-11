@@ -48,20 +48,20 @@ export default function TestimonialsSection() {
       {/* Subtle light-mode radial background to give it a soft, premium studio feel */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,1)_0%,_transparent_60%)]"></div>
 
-      <div className="max-w-[1600px] mx-auto px-4 md:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 relative z-10">
         
         {/* LEFT COLUMN: Context & Google Badge */}
         <div className="lg:col-span-5 flex flex-col justify-center">
           <span className="uppercase tracking-[4px] text-gold font-bold text-xs block mb-6">
             Client Reputation
           </span>
-          <h2 className="text-5xl md:text-7xl font-heading font-bold text-[#0A0A0A] mb-12 leading-[1.1] tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-[#0A0A0A] mb-8 md:mb-12 leading-[1.1] tracking-tight">
             Don't just take our word for it.
           </h2>
 
           {/* Glowing Google Badge (Light Mode) */}
-          <div className="inline-flex items-center gap-6 bg-white border border-black/5 p-6 rounded-2xl mb-12 max-w-fit shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-1 duration-500">
-            <div className="w-14 h-14 bg-[#F8F9FA] rounded-full flex items-center justify-center p-3 shrink-0">
+          <div className="inline-flex items-center gap-4 md:gap-6 bg-white border border-black/5 p-4 md:p-6 rounded-2xl mb-0 lg:mb-12 max-w-fit shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-1 duration-500">
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-[#F8F9FA] rounded-full flex items-center justify-center p-3 shrink-0">
               <svg viewBox="0 0 24 24" className="w-full h-full">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -70,16 +70,16 @@ export default function TestimonialsSection() {
               </svg>
             </div>
             <div>
-              <div className="flex items-center gap-1 text-gold text-xl mb-1">
+              <div className="flex items-center gap-1 text-gold text-lg md:text-xl mb-1">
                 ★★★★★
               </div>
-              <div className="text-[#0A0A0A] font-bold text-xl leading-none">4.9 / 5.0</div>
-              <div className="text-black/40 text-xs mt-1 uppercase tracking-widest font-bold">Google Reviews</div>
+              <div className="text-[#0A0A0A] font-bold text-lg md:text-xl leading-none">4.9 / 5.0</div>
+              <div className="text-black/40 text-[10px] md:text-xs mt-1 uppercase tracking-widest font-bold">Google Reviews</div>
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex gap-4">
+          {/* Navigation Controls (Desktop Only) */}
+          <div className="hidden lg:flex gap-4 mt-12">
             <button 
               onClick={prevTestimonial}
               className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300"
@@ -96,48 +96,66 @@ export default function TestimonialsSection() {
         </div>
 
         {/* RIGHT COLUMN: The Massive Editorial Quote */}
-        <div className="lg:col-span-7 relative min-h-[400px] flex items-center">
+        <div className="lg:col-span-7 relative flex flex-col justify-center min-h-[350px] md:min-h-[400px]">
           
           {/* Background decorative quote mark */}
-          <div className="absolute -top-8 -left-4 md:-left-12 text-[150px] md:text-[250px] font-serif text-black/5 leading-none select-none pointer-events-none">
+          <div className="absolute -top-4 -left-2 md:-top-8 md:-left-12 text-[120px] md:text-[250px] font-serif text-black/5 leading-none select-none pointer-events-none">
             "
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={current}
-              initial={{ opacity: 0, x: 50, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, x: -50, filter: 'blur(10px)' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full"
+          <div className="relative z-10 w-full">
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={current}
+                initial={{ opacity: 0, x: 20, filter: 'blur(5px)' }}
+                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, x: -20, filter: 'blur(5px)' }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full"
+              >
+                {/* Stars */}
+                <div className="flex gap-1 text-gold text-sm md:text-base mb-4 md:mb-6">
+                  {[...Array(testimonials[current].rating)].map((_, i) => <span key={i}>★</span>)}
+                </div>
+
+                {/* The Quote */}
+                <p className="text-lg md:text-3xl lg:text-4xl font-serif italic text-[#111] leading-relaxed mb-8 md:mb-10 drop-shadow-sm max-w-3xl">
+                  "{testimonials[current].review}"
+                </p>
+
+                {/* Author Info */}
+                <div className="flex items-center gap-4 md:gap-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 rounded-full border border-gold/50 scale-110"></div>
+                    <img 
+                      src={testimonials[current].img} 
+                      alt={testimonials[current].name} 
+                      className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover relative z-10 grayscale" 
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-[#0A0A0A] font-bold text-lg md:text-xl">{testimonials[current].name}</h4>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Controls (Mobile Only) */}
+          <div className="flex lg:hidden gap-4 mt-10 relative z-20">
+            <button 
+              onClick={prevTestimonial}
+              className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300"
             >
-              {/* Stars */}
-              <div className="flex gap-2 text-gold text-sm mb-6">
-                {[...Array(testimonials[current].rating)].map((_, i) => <span key={i}>★</span>)}
-              </div>
-
-              {/* The Quote */}
-              <p className="text-xl md:text-3xl lg:text-4xl font-serif italic text-[#111] leading-relaxed mb-10 drop-shadow-sm max-w-3xl">
-                "{testimonials[current].review}"
-              </p>
-
-              {/* Author Info */}
-              <div className="flex items-center gap-6">
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full border border-gold/50 scale-110"></div>
-                  <img 
-                    src={testimonials[current].img} 
-                    alt={testimonials[current].name} 
-                    className="w-16 h-16 rounded-full object-cover relative z-10 grayscale" 
-                  />
-                </div>
-                <div>
-                  <h4 className="text-[#0A0A0A] font-bold text-xl">{testimonials[current].name}</h4>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              ←
+            </button>
+            <button 
+              onClick={nextTestimonial}
+              className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300"
+            >
+              →
+            </button>
+          </div>
           
         </div>
 
