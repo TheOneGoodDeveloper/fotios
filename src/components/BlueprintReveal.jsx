@@ -28,9 +28,9 @@ export default function BlueprintReveal() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-[150vh] bg-[#050505] group"
+      className="relative w-full h-[250vh] bg-[#050505] group"
     >
-      {/* Sticky Screen - This locks into the viewport while you scroll through the 150vh parent */}
+      {/* Sticky Screen - This locks into the viewport while you scroll through the 250vh parent */}
       <div className="sticky top-0 w-full h-screen overflow-hidden border-y border-border">
         
         {/* 1. Base Layer: The Technical "Blueprint" */}
@@ -50,7 +50,7 @@ export default function BlueprintReveal() {
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
               X-RAY DIAGNOSTIC MODE: ACTIVE
             </p>
-            <p>KEEP SCROLLING OR HOVER TO REVEAL</p>
+            <p>KEEP SCROLLING TO REVEAL</p>
           </div>
           
           <h2 className="text-6xl md:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none" 
@@ -70,12 +70,6 @@ export default function BlueprintReveal() {
             opacity: scrollOpacity,
             scale: scrollScale,
             filter: scrollBlur
-          }}
-          whileHover={{
-            opacity: 1,
-            scale: 1,
-            filter: "blur(0px)",
-            transition: { duration: 0.8, ease: "easeOut" }
           }}
         >
           {/* The Collage Grid (Full Screen Reveal) */}
