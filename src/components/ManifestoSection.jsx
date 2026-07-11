@@ -7,12 +7,12 @@ export default function ManifestoSection() {
   // Track scroll position within this 250vh tall section
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"] // Track for the ENTIRE time it's on screen
   });
 
-  // The digital wipe mask: starts fully hidden (100% inset from top), 
-  // and animates to 0% inset (fully visible) exactly tied to scroll percentage
-  const clipPath = useTransform(scrollYProgress, [0.25, 0.75], ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"]);
+  // The digital wipe mask: recalculate mapped values for the new global offset
+  // 0.285 is when it hits top, 0.714 is when it starts leaving. So 0.4 to 0.6 is perfectly in the middle.
+  const clipPath = useTransform(scrollYProgress, [0.4, 0.6], ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"]);
 
   return (
     <section ref={containerRef} className="relative h-[250vh] bg-[#050505] w-full z-10 border-y border-white/5">
@@ -34,7 +34,12 @@ export default function ManifestoSection() {
 
         {/* Layer 2: The Masking Wipe */}
         <motion.div 
-          style={{ clipPath, WebkitClipPath: clipPath }}
+          style={{ 
+            clipPath, 
+            WebkitClipPath: clipPath,
+            willChange: 'clip-path',
+            transform: 'translateZ(0)'
+          }}
           className="absolute inset-0 flex items-center justify-center bg-[#050505] z-10"
         >
           {/* Duplicated grid background to seamlessly blend during the wipe */}

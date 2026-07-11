@@ -16,14 +16,14 @@ export default function BlueprintReveal() {
   // Track the scroll position relative to the massive 150vh parent container
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start end", "end start"] // Track for the ENTIRE time it's on screen
   });
 
   // Map scroll progress to visual properties.
-  // Stays hidden until 25% scrolled, then fades in until 75% scrolled
-  const scrollOpacity = useTransform(scrollYProgress, [0.25, 0.75], [0, 1]);
-  const scrollScale = useTransform(scrollYProgress, [0.25, 0.75], [1.05, 1]);
-  const scrollBlur = useTransform(scrollYProgress, [0.25, 0.75], ["blur(10px)", "blur(0px)"]);
+  // 0.285 is when it hits top, 0.714 is when it starts leaving. So 0.4 to 0.6 is perfectly in the middle.
+  const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  const scrollScale = useTransform(scrollYProgress, [0.4, 0.6], [1.05, 1]);
+  const scrollBlur = useTransform(scrollYProgress, [0.4, 0.6], ["blur(10px)", "blur(0px)"]);
 
   return (
     <section 
@@ -69,7 +69,9 @@ export default function BlueprintReveal() {
           style={{
             opacity: scrollOpacity,
             scale: scrollScale,
-            filter: scrollBlur
+            filter: scrollBlur,
+            willChange: 'opacity, transform, filter',
+            transform: 'translateZ(0)'
           }}
         >
           {/* The Collage Grid (Full Screen Reveal) */}
