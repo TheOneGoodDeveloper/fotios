@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
-import { Megaphone, Users, ThumbsUp } from 'lucide-react';
 
 const Counter = ({ from, to, duration = 2, suffix = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -34,62 +33,75 @@ export default function WelcomeSection() {
   };
 
   return (
-    <section className="py-32 px-4 md:px-16 bg-bg-primary">
+    <section className="py-32 px-4 md:px-16 lg:px-24 bg-[#050505]">
       <motion.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-        className="max-w-5xl mx-auto text-center"
+        className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24"
       >
-        <motion.span variants={textVariants} className="uppercase tracking-[4px] text-text-secondary font-bold text-xs block mb-8">
-          Core values and our Vision
-        </motion.span>
         
-        <motion.h2 variants={textVariants} className="text-4xl md:text-6xl font-heading font-bold text-text-primary mb-12 leading-tight">
-          Welcome To Fotios
-        </motion.h2>
+        {/* Left Column: Vision & Visuals */}
+        <motion.div variants={textVariants} className="flex flex-col">
+          <span className="uppercase tracking-[4px] text-white/50 font-bold text-xs block mb-8 flex items-center gap-4">
+            <div className="w-12 h-px bg-white/30"></div>
+            Core values and our Vision
+          </span>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-12 leading-[1.1] tracking-tight">
+            Helping you transform engineering across the globe.
+          </h2>
 
-        <motion.div variants={textVariants} className="text-text-secondary space-y-6 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-          <p>
-            Fotios provides one stop Engineering based solution for your trade and industry which covers our complete MEP & Annual Maintenance service for Buildings, Villas, Shopping centres, Events and Exhibitions, interiors etc.
-          </p>
-          <p>
-            We provide full contract from planning and consultation designing, project management, installation, technical and after sales services to our valued client. And having local access to the database of materials and labour locally and internationally.
-          </p>
+          {/* Stylized UAE/KSA Map Graphic */}
+          <div className="w-full mt-auto relative opacity-90 mix-blend-lighten grayscale-[50%]">
+            <img 
+              src="/uae_ksa_map.png" 
+              alt="UAE & KSA Regional Reach" 
+              className="w-full h-[400px] object-cover rounded-xl"
+            />
+            {/* Subtle tech overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent pointer-events-none"></div>
+          </div>
         </motion.div>
 
-        {/* Statistics Grid */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mt-24 pt-16 border-t border-border w-full">
-          <motion.div variants={textVariants} className="flex flex-col items-center">
-            <div className="flex items-center gap-4 text-gold mb-6">
-              <Megaphone size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">
+        {/* Right Column: Paragraphs & Massive Stats */}
+        <motion.div variants={textVariants} className="flex flex-col lg:pl-12">
+          
+          <div className="text-white/70 space-y-6 text-lg md:text-xl leading-relaxed mb-16">
+            <p>
+              Fotios provides one stop Engineering based solution for your trade and industry which covers our complete MEP & Annual Maintenance service for Buildings, Villas, Shopping centres, Events and Exhibitions, interiors etc.
+            </p>
+            <p>
+              We provide full contract from planning and consultation designing, project management, installation, technical and after sales services to our valued client. And having local access to the database of materials and labour locally and internationally.
+            </p>
+          </div>
+
+          {/* Stacked Massive Statistics - PCL Style */}
+          <div className="flex flex-col gap-16 mt-auto">
+            
+            <motion.div variants={textVariants}>
+              <span className="text-7xl md:text-8xl lg:text-[100px] font-heading font-bold text-gold drop-shadow-lg leading-none block mb-2">
                 <Counter from={0} to={500} suffix="+" delay={0.2} />
               </span>
-            </div>
-            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Exhibition Stands</span>
-          </motion.div>
+              <span className="text-white font-medium text-lg tracking-wide">Exhibition Stands</span>
+            </motion.div>
 
-          <motion.div variants={textVariants} className="flex flex-col items-center">
-            <div className="flex items-center gap-4 text-gold mb-6">
-              <Users size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">
+            <motion.div variants={textVariants}>
+              <span className="text-7xl md:text-8xl lg:text-[100px] font-heading font-bold text-gold drop-shadow-lg leading-none block mb-2">
                 <Counter from={0} to={300} suffix="+" delay={0.4} />
               </span>
-            </div>
-            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customers</span>
-          </motion.div>
+              <span className="text-white font-medium text-lg tracking-wide">Customers</span>
+            </motion.div>
 
-          <motion.div variants={textVariants} className="flex flex-col items-center">
-            <div className="flex items-center gap-4 text-gold mb-6">
-              <ThumbsUp size={48} strokeWidth={1.5} />
-              <span className="text-6xl md:text-7xl font-heading font-bold">
+            <motion.div variants={textVariants}>
+              <span className="text-7xl md:text-8xl lg:text-[100px] font-heading font-bold text-gold drop-shadow-lg leading-none block mb-2">
                 <Counter from={0} to={100} suffix="%" delay={0.6} />
               </span>
-            </div>
-            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customer Satisfaction</span>
-          </motion.div>
+              <span className="text-white font-medium text-lg tracking-wide">Customer Satisfaction</span>
+            </motion.div>
+
+          </div>
         </motion.div>
 
       </motion.div>

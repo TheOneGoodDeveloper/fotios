@@ -10,20 +10,7 @@ import Preloader from './components/Preloader';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
-const Header = () => (
-  <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 bg-white/90 backdrop-blur-md border-b border-border">
-    <div className="font-heading text-2xl font-bold tracking-tight text-text-primary cursor-hover">FOTIOS<span className="text-gold">.</span></div>
-    <nav className="hidden md:flex gap-10">
-      <a href="/" className="uppercase tracking-widest text-xs font-bold text-text-primary hover:text-gold transition-colors">The Work</a>
-      <a href="/services" className="uppercase tracking-widest text-xs font-bold text-text-primary hover:text-gold transition-colors">Expertise</a>
-      <a href="/about" className="uppercase tracking-widest text-xs font-bold text-text-primary hover:text-gold transition-colors">Vision</a>
-    </nav>
-    <a href="/contact" className="px-8 py-3 bg-text-primary text-white text-xs uppercase tracking-widest font-bold hover:bg-gold transition-all">
-      Get a Quote
-    </a>
-  </header>
-);
-
+import Header from './components/Header';
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({

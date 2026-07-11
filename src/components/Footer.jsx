@@ -1,85 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import MagneticButton from './MagneticButton';
+
+const LiveClock = ({ timeZone, label }) => {
+  const [time, setTime] = useState('');
+  
+  useEffect(() => {
+    // Initial set
+    const date = new Date();
+    setTime(date.toLocaleTimeString('en-US', { timeZone, hour12: true, hour: '2-digit', minute:'2-digit' }));
+    
+    const timer = setInterval(() => {
+      const date = new Date();
+      setTime(date.toLocaleTimeString('en-US', { timeZone, hour12: true, hour: '2-digit', minute:'2-digit' }));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [timeZone]);
+
+  return (
+    <div className="flex flex-col">
+      <span className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-2">{label}</span>
+      <span className="text-white font-mono text-sm tracking-widest">{time || '00:00 AM'}</span>
+    </div>
+  );
+};
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] pt-32 pb-16">
+    <footer className="bg-[#050505] min-h-screen flex flex-col justify-between pt-32 px-4 md:px-16 overflow-hidden relative border-t border-white/10 z-10">
       
-      {/* CTA Section (Integrated cleanly instead of floating banner) */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-16 mb-24 border-b border-white/10 pb-24 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-10">
-        <h3 className="text-white font-heading text-4xl md:text-5xl font-bold leading-tight max-w-2xl">
-          Get in touch with us if you have a question or comment.
-        </h3>
-        <a href="/contact" className="px-10 py-4 bg-white text-[#111111] uppercase tracking-widest text-sm font-bold hover:bg-gold hover:text-white transition-colors shrink-0">
-          Contact Us
-        </a>
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-4 md:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+      {/* Top Section: Links & Contact */}
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-16 w-full max-w-[1600px] mx-auto z-10">
         
-        {/* About Column */}
-        <div>
-          <div className="font-heading text-3xl font-bold tracking-tight text-white mb-8">FOTIOS<span className="text-gold">.</span></div>
-          <p className="text-white/50 text-sm leading-relaxed mb-8 pr-4">
-            Fotios is a trusted house engaged in offering MEP and exhibition stands for practice interior, maintenance works on turnkey basis for clients.
-          </p>
-          <h4 className="text-white uppercase tracking-widest text-xs font-bold mb-4">Work Days</h4>
-          <ul className="text-white/50 text-sm space-y-3">
-            <li className="flex justify-between border-b border-white/10 pb-2"><span>Mon - Fri</span> <span>9:00 AM to 6:00 PM</span></li>
-            <li className="flex justify-between border-b border-white/10 pb-2"><span>Saturday</span> <span>9:00 AM to 2:00 PM</span></li>
-            <li className="flex justify-between text-gold pb-2"><span>Sunday</span> <span>Holiday</span></li>
-          </ul>
+        {/* Call to Action */}
+        <div className="max-w-2xl">
+          <h2 className="text-white font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-12">
+            Let's build the <br/><span className="text-gold italic font-serif">future.</span>
+          </h2>
+          <div className="inline-block">
+            <MagneticButton>
+              <a href="/contact" className="flex items-center justify-center w-32 h-32 md:w-48 md:h-48 rounded-full bg-gold text-[#050505] font-bold uppercase tracking-widest text-[10px] md:text-xs hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(212,175,55,0.3)]">
+                Get in touch
+              </a>
+            </MagneticButton>
+          </div>
         </div>
 
-        {/* Services Column */}
-        <div>
-          <h4 className="text-white font-heading text-2xl mb-8">Our Services</h4>
-          <ul className="text-white/50 text-sm space-y-4">
-            <li><a href="#" className="hover:text-gold transition-colors">Interior Work</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Air Conditioning Service</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Upkeep And Maintenance Works</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">HVAC Maintenance Works</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Plumbing Maintenance Works</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Civil Maintenance Works</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">CCTV Installation</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Custom Furniture Fabrication</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Exhibition Stands</a></li>
-          </ul>
-        </div>
-
-        {/* Contact Details Column */}
-        <div className="lg:col-span-2">
-          <h4 className="text-white font-heading text-2xl mb-8">Contact Details</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div>
-              <strong className="text-white block mb-2 text-sm uppercase tracking-widest">UAE Office</strong>
-              <p className="text-white/50 text-sm leading-relaxed mb-6">
-                Al Qusais Industrial Area 3<br/>
-                Dubai, UAE<br/>
-                P.O Box - 232047
-              </p>
-              
-              <strong className="text-white block mb-2 text-sm uppercase tracking-widest">KSA Office</strong>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Riyadh, Saudi Arabia
-              </p>
-            </div>
-            
-            <div>
-              <strong className="text-white block mb-2 text-sm uppercase tracking-widest">Call Us</strong>
-              <p className="text-white/50 text-sm mb-6">+971 4 239 1234</p>
-              
-              <strong className="text-white block mb-2 text-sm uppercase tracking-widest">Email</strong>
-              <p className="text-white/50 text-sm">info@fotiosuae.com</p>
-            </div>
+        {/* Navigation & Info */}
+        <div className="grid grid-cols-2 gap-16 md:gap-32 mt-12 lg:mt-0 pt-4">
+          <div className="flex flex-col gap-6 items-start">
+            <span className="text-white/40 uppercase tracking-[0.2em] text-[10px] mb-4">Navigation</span>
+            <MagneticButton><a href="/" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">The Work</a></MagneticButton>
+            <MagneticButton><a href="/services" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Expertise</a></MagneticButton>
+            <MagneticButton><a href="/about" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Vision</a></MagneticButton>
+          </div>
+          <div className="flex flex-col gap-6 items-start">
+            <span className="text-white/40 uppercase tracking-[0.2em] text-[10px] mb-4">Socials</span>
+            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Instagram</a></MagneticButton>
+            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">LinkedIn</a></MagneticButton>
+            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Twitter</a></MagneticButton>
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-white/30 text-xs gap-4">
-        <p>Copyright © 2024 Fotios. All rights reserved.</p>
-        <p>Best MEP design and interior design company in Dubai, UAE | KSA - Saudi Arabia</p>
+      {/* Middle Section: Clocks & Details */}
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mt-32 mb-16 z-10 gap-12">
+        <div className="flex flex-row gap-12 md:gap-24">
+          <LiveClock timeZone="Asia/Dubai" label="Dubai, UAE" />
+          <LiveClock timeZone="Asia/Riyadh" label="Riyadh, KSA" />
+        </div>
+        <div className="text-white/30 text-[10px] uppercase tracking-widest text-left md:text-right">
+          <p className="mb-2">Fotios Engineering LLC © {new Date().getFullYear()}</p>
+          <p>All Rights Reserved.</p>
+        </div>
       </div>
+
+      {/* Massive Typography Mark */}
+      <div className="w-full overflow-hidden flex justify-center items-end mt-auto pointer-events-none select-none z-0">
+        <h1 className="text-[24vw] leading-[0.75] font-heading font-bold text-white text-center tracking-tighter w-full opacity-90">
+          FOTIOS<span className="text-gold">.</span>
+        </h1>
+      </div>
+
     </footer>
   );
 }
