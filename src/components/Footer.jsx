@@ -27,57 +27,108 @@ const LiveClock = ({ timeZone, label }) => {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] min-h-screen flex flex-col justify-between pt-32 px-4 md:px-16 overflow-hidden relative border-t border-white/10 z-10">
+    <footer className="bg-[#050505] flex flex-col justify-between pt-24 md:pt-32 px-4 md:px-16 overflow-hidden relative z-10 border-t border-white/5">
       
-      {/* Top Section: Links & Contact */}
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-16 w-full max-w-[1600px] mx-auto z-10">
+      {/* Mega Footer Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-12 xl:gap-8 w-full max-w-[1600px] mx-auto z-10 mb-24">
         
-        {/* Call to Action */}
-        <div className="max-w-2xl">
-          <h2 className="text-white font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-12">
-            Let's build the <br/><span className="text-gold italic font-serif">future.</span>
-          </h2>
-          <div className="inline-block">
-            <MagneticButton>
-              <a href="/contact" className="flex items-center justify-center w-32 h-32 md:w-48 md:h-48 rounded-full bg-gold text-[#050505] font-bold uppercase tracking-widest text-[10px] md:text-xs hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(212,175,55,0.3)]">
-                Get in touch
-              </a>
-            </MagneticButton>
+        {/* Column 1: Company & Hours (xl:col-span-3) */}
+        <div className="xl:col-span-3 flex flex-col items-start pr-0 md:pr-8">
+          <h3 className="text-white font-heading font-bold tracking-widest text-2xl mb-6">FOTIOS<span className="text-gold">.</span></h3>
+          <p className="text-white/40 text-sm leading-relaxed mb-8">
+            Fotios is a business house engaged in Interior Work, MEP Installation Works For Exhibition Stands, Maintenance Works and Handyman Services.
+          </p>
+          
+          <div className="w-full">
+            <span className="text-gold uppercase tracking-[0.2em] text-[10px] mb-4 block font-bold">Work Days</span>
+            <ul className="text-white/60 text-xs flex flex-col gap-3 w-full">
+              <li className="flex justify-between border-b border-white/5 pb-2"><span>Mon - Fri</span> <span>8:30 AM - 5:30 PM</span></li>
+              <li className="flex justify-between border-b border-white/5 pb-2"><span>Saturday</span> <span>8:30 AM - 1:00 PM</span></li>
+              <li className="flex justify-between text-gold"><span>Sunday</span> <span>Holiday</span></li>
+            </ul>
           </div>
         </div>
 
-        {/* Navigation & Info */}
-        <div className="grid grid-cols-2 gap-16 md:gap-32 mt-12 lg:mt-0 pt-4">
-          <div className="flex flex-col gap-6 items-start">
-            <span className="text-white/40 uppercase tracking-[0.2em] text-[10px] mb-4">Navigation</span>
-            <MagneticButton><a href="/" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">The Work</a></MagneticButton>
-            <MagneticButton><a href="/services" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Expertise</a></MagneticButton>
-            <MagneticButton><a href="/about" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Vision</a></MagneticButton>
+        {/* Column 2: Exhibitions & Interiors (xl:col-span-3) */}
+        <div className="xl:col-span-3 flex flex-col gap-10">
+          <div>
+            <span className="text-white/80 font-heading font-bold text-lg mb-4 block">Exhibitions & Events</span>
+            <ul className="text-white/40 text-sm flex flex-col gap-3">
+              <li className="hover:text-gold transition-colors cursor-pointer">MEP Installation for Exhibition Stands</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Events & World Expos</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Equipment Rental & Installation</li>
+            </ul>
           </div>
-          <div className="flex flex-col gap-6 items-start">
-            <span className="text-white/40 uppercase tracking-[0.2em] text-[10px] mb-4">Socials</span>
-            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Instagram</a></MagneticButton>
-            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">LinkedIn</a></MagneticButton>
-            <MagneticButton><a href="#" className="text-white text-2xl md:text-4xl font-heading hover:text-gold transition-colors inline-block">Twitter</a></MagneticButton>
+          <div>
+            <span className="text-white/80 font-heading font-bold text-lg mb-4 block">Interiors & Fit-out</span>
+            <ul className="text-white/40 text-sm flex flex-col gap-3">
+              <li className="hover:text-gold transition-colors cursor-pointer">Interior Work</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Painting & Ceiling Works</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Curtain & Furniture Installation</li>
+            </ul>
           </div>
         </div>
+
+        {/* Column 3: MEP & Security (xl:col-span-3) */}
+        <div className="xl:col-span-3 flex flex-col gap-10">
+          <div>
+            <span className="text-white/80 font-heading font-bold text-lg mb-4 block">MEP Works</span>
+            <ul className="text-white/40 text-sm flex flex-col gap-3">
+              <li className="hover:text-gold transition-colors cursor-pointer">MEP Maintenance</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Electrical Works</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">HVAC Works</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Plumbing Works</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Civil Maintenance</li>
+            </ul>
+          </div>
+          <div>
+            <span className="text-white/80 font-heading font-bold text-lg mb-4 block">Security & Handyman</span>
+            <ul className="text-white/40 text-sm flex flex-col gap-3">
+              <li className="hover:text-gold transition-colors cursor-pointer">CCTV Installation</li>
+              <li className="hover:text-gold transition-colors cursor-pointer">Handyman Services</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Column 4: Contact (xl:col-span-3) */}
+        <div className="xl:col-span-3 flex flex-col items-start xl:items-end text-left xl:text-right">
+          <span className="text-gold uppercase tracking-[0.2em] text-[10px] mb-6 block font-bold">Contact Details</span>
+          
+          <div className="flex flex-col gap-6 text-sm text-white/60 mb-8">
+            <div>
+              <span className="text-white/80 block font-bold mb-1">Fotios Infinite Solutions</span>
+              <p>Warehouse No-2 Jebel Ali<br/>Industrial Area - 1 Dubai<br/>UAE.</p>
+            </div>
+            <div>
+              <a href="tel:+97145707825" className="hover:text-gold transition-colors block">+971 4 570 7825</a>
+            </div>
+            <div>
+              <a href="mailto:info@fotiosuae.com" className="hover:text-gold transition-colors block">info@fotiosuae.com</a>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-all">In</a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-all">Tw</a>
+          </div>
+        </div>
+
       </div>
 
-      {/* Middle Section: Clocks & Details */}
-      <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mt-32 mb-16 z-10 gap-12">
-        <div className="flex flex-row gap-12 md:gap-24">
+      {/* Middle Section: Clocks & Copyright */}
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center mb-16 z-10 gap-8 border-t border-white/5 pt-8">
+        <div className="flex flex-row gap-12">
           <LiveClock timeZone="Asia/Dubai" label="Dubai, UAE" />
           <LiveClock timeZone="Asia/Riyadh" label="Riyadh, KSA" />
         </div>
-        <div className="text-white/30 text-[10px] uppercase tracking-widest text-left md:text-right">
-          <p className="mb-2">Fotios Engineering LLC © {new Date().getFullYear()}</p>
-          <p>All Rights Reserved.</p>
+        <div className="text-white/30 text-[10px] uppercase tracking-widest text-center md:text-right">
+          Fotios Engineering LLC © {new Date().getFullYear()}. All Rights Reserved.
         </div>
       </div>
 
       {/* Massive Typography Mark */}
       <div className="w-full overflow-hidden flex justify-center items-end mt-auto pointer-events-none select-none z-0">
-        <h1 className="text-[24vw] leading-[0.75] font-heading font-bold text-white text-center tracking-tighter w-full opacity-90">
+        <h1 className="text-[20vw] md:text-[24vw] leading-[0.75] font-heading font-black text-white text-center tracking-tighter w-full opacity-90">
           FOTIOS<span className="text-gold">.</span>
         </h1>
       </div>

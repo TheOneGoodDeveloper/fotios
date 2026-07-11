@@ -14,7 +14,7 @@ export default function KineticMarquee() {
           <div key={i} className="flex items-center">
             <span className="text-6xl md:text-8xl font-heading font-bold text-transparent px-8" 
                   style={{ WebkitTextStroke: '2px rgba(0, 0, 0, 0.6)' }}>
-              BUILDING THE FUTURE
+              WORLD EXPOS • IMMERSIVE PAVILIONS • CUSTOM STANDS • B2B EVENTS • MEP Engineering
             </span>
             <span className="text-4xl text-black px-4">✦</span>
             <span className="text-6xl md:text-8xl font-heading font-bold text-black px-8">

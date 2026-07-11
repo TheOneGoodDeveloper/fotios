@@ -39,27 +39,68 @@ export default function BentoServices() {
         </motion.h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {services.map((service, idx) => (
-          <motion.div 
-            key={idx}
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 1.02 }}
-            className="group cursor-pointer"
-          >
-            <div className="relative overflow-hidden aspect-[4/3] mb-6">
-              <img 
-                src={service.img} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                alt={service.title}
-              />
-            </div>
-            <h3 className="text-2xl font-heading font-bold text-text-primary text-center px-4">
-              {service.title}
+      <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-8 min-h-[600px]">
+        
+        {/* The 70% Star: Exhibitions (Spans 8 columns, 2 full rows) */}
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.01 }}
+          className="group cursor-pointer md:col-span-8 md:row-span-2 relative overflow-hidden rounded-xl"
+        >
+          <img 
+            src={services[2].img} 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            alt={services[2].title}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 p-8 md:p-12">
+            <span className="uppercase tracking-[3px] text-gold font-bold text-xs mb-3 block">70% Core Focus</span>
+            <h3 className="text-3xl md:text-5xl font-heading font-bold text-white max-w-lg leading-tight">
+              {services[2].title}
             </h3>
-          </motion.div>
-        ))}
+          </div>
+        </motion.div>
+
+        {/* The 20% Backbone: MEP (Spans 4 columns, 1 row) */}
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          className="group cursor-pointer md:col-span-4 md:row-span-1 relative overflow-hidden rounded-xl min-h-[300px]"
+        >
+          <img 
+            src={services[1].img} 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            alt={services[1].title}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 p-6 md:p-8">
+            <span className="uppercase tracking-[3px] text-gold font-bold text-[10px] mb-2 block">Engineering</span>
+            <h3 className="text-xl md:text-2xl font-heading font-bold text-white leading-tight">
+              {services[1].title}
+            </h3>
+          </div>
+        </motion.div>
+
+        {/* The 10% Support: Interior (Spans 4 columns, 1 row) */}
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          className="group cursor-pointer md:col-span-4 md:row-span-1 relative overflow-hidden rounded-xl min-h-[300px]"
+        >
+          <img 
+            src={services[0].img} 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            alt={services[0].title}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 p-6 md:p-8">
+            <span className="uppercase tracking-[3px] text-gold font-bold text-[10px] mb-2 block">Support</span>
+            <h3 className="text-xl md:text-2xl font-heading font-bold text-white leading-tight">
+              {services[0].title}
+            </h3>
+          </div>
+        </motion.div>
+
       </div>
       
       <div className="mt-20 text-center">

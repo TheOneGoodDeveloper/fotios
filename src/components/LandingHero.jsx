@@ -3,9 +3,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import MagneticButton from './MagneticButton';
 
 const slides = [
-  { img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070", title: "Precision Engineering." },
-  { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075", title: "Immersive Spaces." },
-  { img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931", title: "Infinite Solutions." }
+  { img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070", title: "Exhibitions &\nEvents." },
+  { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075", title: "MEP\nEngineering." },
+  { img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931", title: "Interiors &\nFit\u2011Out." }
 ];
 
 export default function LandingHero() {
@@ -77,11 +77,11 @@ export default function LandingHero() {
           <AnimatePresence mode="wait">
             <motion.h1 
               key={current}
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -50, opacity: 0 }}
+              exit={{ y: -30, opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight drop-shadow-lg"
+              className="text-5xl md:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight drop-shadow-lg whitespace-pre-line"
             >
               {slides[current].title}
             </motion.h1>

@@ -53,13 +53,13 @@ export default function BlueprintReveal() {
             <p>KEEP SCROLLING TO REVEAL</p>
           </div>
           
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight md:tracking-normal" 
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight whitespace-nowrap px-4 w-full" 
               style={{ WebkitTextStroke: '2px rgba(212, 175, 55, 0.3)' }}>
-            ENGINEERING
+            FROM BLUEPRINT
           </h2>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight md:tracking-normal" 
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight whitespace-nowrap px-4 w-full" 
               style={{ WebkitTextStroke: '2px rgba(212, 175, 55, 0.3)' }}>
-            THE FUTURE.
+            TO SHOWSTOPPER.
           </h2>
         </div>
 
@@ -110,12 +110,12 @@ export default function BlueprintReveal() {
           </div>
 
           {/* Solid Typography that perfectly overlaps the wireframe */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none z-20">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight md:tracking-normal">
-              ENGINEERING
+          <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none z-20 w-full overflow-hidden">
+            <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight whitespace-nowrap px-4 w-full">
+              FROM BLUEPRINT 
             </h2>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight md:tracking-normal">
-              THE FUTURE.
+            <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight whitespace-nowrap px-4 w-full">
+              TO SHOWSTOPPER.
             </h2>
           </div>
 

@@ -64,22 +64,18 @@ export default function Preloader() {
           <div className="absolute inset-0 bg-black/30"></div>
 
           <div className="relative flex flex-col items-center z-10">
-            {/* Cinematic Film Title Text Animation */}
+            {/* Cinematic Film Logo Animation */}
             <motion.div 
-              initial={{ opacity: 0, letterSpacing: "0.5em", scale: 0.95 }}
-              animate={{ opacity: 1, letterSpacing: "0.15em", scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-5xl md:text-7xl font-bold text-white flex items-center mb-12 shadow-2xl"
+              className="flex items-center mb-4"
             >
-              FOTIOS
-              <motion.span 
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
-                className="text-gold ml-2"
-              >
-                .
-              </motion.span>
+              <img 
+                src="/fotios-infinite-bg.png" 
+                alt="Fotios Infinite Solutions" 
+                className="h-24 md:h-32 object-contain drop-shadow-2xl"
+              />
             </motion.div>
             
             {/* Loading Bar */}
