@@ -23,7 +23,7 @@ export default function LandingHero() {
     <section className="relative min-h-screen w-full overflow-hidden bg-bg-primary pt-24 md:pt-0">
       
       {/* Background Slider */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div 
           key={current}
           initial={{ opacity: 0, scale: 1.05 }}
