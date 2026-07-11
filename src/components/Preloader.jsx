@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../assets/fotios-infinite-bg.png';
 
 const preloaderImages = [
   "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
@@ -72,7 +73,7 @@ export default function Preloader() {
               className="flex items-center mb-4"
             >
               <img 
-                src="/assets/fotios-infinite-bg.png" 
+                src={logoImg} 
                 alt="Fotios Infinite Solutions" 
                 className="h-24 md:h-32 object-contain drop-shadow-2xl"
               />
