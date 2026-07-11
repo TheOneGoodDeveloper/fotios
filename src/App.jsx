@@ -19,7 +19,7 @@ export default function App() {
       smoothWheel: true,
       wheelMultiplier: 0.75, // Slows down mouse wheel scroll distance
       syncTouch: true,
-      touchMultiplier: 1.5, // Slows down touch swipe scroll distance
+      touchMultiplier: 0.6, // Slows down touch swipe scroll for a heavier, cinematic feel on mobile/tablet
     });
 
     function raf(time) {
