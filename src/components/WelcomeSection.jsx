@@ -34,7 +34,7 @@ export default function WelcomeSection() {
   };
 
   return (
-    <section className="py-32 px-4 md:px-16 lg:px-24 bg-[#050505]">
+    <section className="py-32 px-4 md:px-16 lg:px-24 bg-[#111111] border-t border-white/5">
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -62,7 +62,7 @@ export default function WelcomeSection() {
               className="w-full h-[400px] object-cover rounded-xl"
             />
             {/* Subtle tech overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent pointer-events-none"></div>
           </div>
         </motion.div>
 

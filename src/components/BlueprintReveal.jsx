@@ -53,11 +53,11 @@ export default function BlueprintReveal() {
             <p>KEEP SCROLLING TO REVEAL</p>
           </div>
           
-          <h2 className="text-6xl md:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none" 
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight md:tracking-normal" 
               style={{ WebkitTextStroke: '2px rgba(212, 175, 55, 0.3)' }}>
             ENGINEERING
           </h2>
-          <h2 className="text-6xl md:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none" 
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none tracking-tight md:tracking-normal" 
               style={{ WebkitTextStroke: '2px rgba(212, 175, 55, 0.3)' }}>
             THE FUTURE.
           </h2>
@@ -109,10 +109,10 @@ export default function BlueprintReveal() {
 
           {/* Solid Typography that perfectly overlaps the wireframe */}
           <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none z-20">
-            <h2 className="text-6xl md:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight md:tracking-normal">
               ENGINEERING
             </h2>
-            <h2 className="text-6xl md:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-bold text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-center leading-none tracking-tight md:tracking-normal">
               THE FUTURE.
             </h2>
           </div>
