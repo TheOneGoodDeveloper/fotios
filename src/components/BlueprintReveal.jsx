@@ -1,36 +1,33 @@
-import React, { useRef, useState } from 'react';
-import { motion, useSpring } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const collageImages = [
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
-  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2000",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000",
-  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
-  "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=2000"
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800",
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800",
+  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+  "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=800"
 ];
 
 export default function BlueprintReveal() {
   const containerRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
   
-  const mouseX = useSpring(0, { stiffness: 50, damping: 20 });
-  const mouseY = useSpring(0, { stiffness: 50, damping: 20 });
+  // Track the scroll position relative to this specific section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 70%", "center center"] // Starts fading in when top is at 70% of viewport, fully visible at center
+  });
 
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
+  // Map scroll progress to visual properties
+  const scrollOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const scrollScale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
+  const scrollBlur = useTransform(scrollYProgress, [0, 1], ["blur(10px)", "blur(0px)"]);
 
   return (
     <section 
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full h-[90vh] min-h-[700px] overflow-hidden bg-[#050505] cursor-none border-y border-border group"
+      className="relative w-full h-[90vh] min-h-[700px] overflow-hidden bg-[#050505] border-y border-border group"
     >
       {/* 1. Base Layer: The Technical "Blueprint" */}
       <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center opacity-70"
@@ -49,7 +46,7 @@ export default function BlueprintReveal() {
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
             X-RAY DIAGNOSTIC MODE: ACTIVE
           </p>
-          <p>SCAN TO REVEAL FINAL BUILD</p>
+          <p>SCROLL OR HOVER TO REVEAL</p>
         </div>
         
         <h2 className="text-6xl md:text-9xl font-heading font-bold text-transparent z-10 text-center leading-none pointer-events-none" 
@@ -65,13 +62,17 @@ export default function BlueprintReveal() {
       {/* 2. Reveal Layer: The Finished Collage */}
       <motion.div 
         className="absolute inset-0 w-full h-full pointer-events-auto"
-        initial={false}
-        animate={{ 
-          opacity: isHovered ? 1 : 0,
-          scale: isHovered ? 1 : 1.02,
-          filter: isHovered ? "blur(0px)" : "blur(5px)"
+        style={{
+          opacity: scrollOpacity,
+          scale: scrollScale,
+          filter: scrollBlur
         }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
+        whileHover={{
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          transition: { duration: 0.8, ease: "easeOut" }
+        }}
       >
         {/* The Collage Grid (Full Screen Reveal) */}
         <div className="absolute inset-0 w-full h-full grid grid-cols-1 md:grid-cols-4 grid-rows-3 gap-4 p-4 bg-[#050505] group/collage">
