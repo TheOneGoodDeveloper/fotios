@@ -14,11 +14,12 @@ import Header from './components/Header';
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 0.75, // Slows down mouse wheel scroll distance
       syncTouch: true,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5, // Slows down touch swipe scroll distance
     });
 
     function raf(time) {
