@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Megaphone, Users, ThumbsUp } from 'lucide-react';
 
 export default function WelcomeSection() {
   const textVariants = {
@@ -32,6 +33,34 @@ export default function WelcomeSection() {
             We provide full contract from planning and consultation designing, project management, installation, technical and after sales services to our valued client. And having local access to the database of materials and labour locally and internationally.
           </p>
         </motion.div>
+
+        {/* Statistics Grid */}
+        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mt-24 pt-16 border-t border-border w-full">
+          <motion.div variants={textVariants} className="flex flex-col items-center">
+            <div className="flex items-center gap-4 text-gold mb-6">
+              <Megaphone size={48} strokeWidth={1.5} />
+              <span className="text-6xl md:text-7xl font-heading font-bold">500+</span>
+            </div>
+            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Exhibition Stands</span>
+          </motion.div>
+
+          <motion.div variants={textVariants} className="flex flex-col items-center">
+            <div className="flex items-center gap-4 text-gold mb-6">
+              <Users size={48} strokeWidth={1.5} />
+              <span className="text-6xl md:text-7xl font-heading font-bold">300+</span>
+            </div>
+            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customers</span>
+          </motion.div>
+
+          <motion.div variants={textVariants} className="flex flex-col items-center">
+            <div className="flex items-center gap-4 text-gold mb-6">
+              <ThumbsUp size={48} strokeWidth={1.5} />
+              <span className="text-6xl md:text-7xl font-heading font-bold">100%</span>
+            </div>
+            <span className="text-text-primary font-bold uppercase tracking-widest text-sm">Customer Satisfaction</span>
+          </motion.div>
+        </motion.div>
+
       </motion.div>
     </section>
   );

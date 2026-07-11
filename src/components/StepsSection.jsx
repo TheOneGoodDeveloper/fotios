@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
-  { num: "01", title: "Book", desc: "Give us your exact date & time when you want us." },
-  { num: "02", title: "Schedule", desc: "Contact us at times that are convenient for you." },
-  { num: "03", title: "Relax", desc: "Our expert team will do the rest and give it back with a new smile." }
+  { num: "1", title: "Book", desc: "Give us your exact date & time when you want us." },
+  { num: "2", title: "Schedule", desc: "Contact us at times that are convenient for you." },
+  { num: "3", title: "Relax", desc: "Our expert team will do the rest and give it back with a new smile." }
 ];
 
 export default function StepsSection() {
@@ -25,7 +25,7 @@ export default function StepsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+        variants={{ visible: { transition: { staggerChildren: 0.8 } } }}
         className="max-w-[1400px] mx-auto text-center"
       >
         <motion.span variants={itemVariants} className="uppercase tracking-[4px] text-text-secondary font-bold text-xs mb-8 block">
@@ -43,7 +43,7 @@ export default function StepsSection() {
               initial={{ width: "0%" }}
               whileInView={{ width: "100%" }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
+              transition={{ duration: 1.6, ease: "linear", delay: 0.5 }}
               className="h-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
             />
           </div>
@@ -54,7 +54,7 @@ export default function StepsSection() {
               initial={{ height: "0%" }}
               whileInView={{ height: "100%" }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+              transition={{ duration: 1.6, ease: "linear", delay: 0.5 }}
               className="w-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
             />
           </div>
@@ -63,8 +63,8 @@ export default function StepsSection() {
             <motion.div 
               key={idx} 
               variants={itemVariants} 
-              whileInView="hover"
-              viewport={{ margin: "-25% 0px -25% 0px" }}
+              whileHover="hover"
+              whileTap="hover"
               className="relative flex flex-col items-center bg-bg-secondary cursor-pointer"
             >
               <motion.div variants={numberVariants} className="text-8xl font-heading font-bold text-text-primary mb-2 relative z-10 bg-bg-secondary px-6">
