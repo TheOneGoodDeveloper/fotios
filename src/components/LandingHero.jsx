@@ -4,7 +4,7 @@ import MagneticButton from './MagneticButton';
 
 const slides = [
   { img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070", title: "Precision Engineering." },
-  { img: "https://images.unsplash.com/photo-1541888087525-0744111352e8?q=80&w=2070", title: "Immersive Spaces." },
+  { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075", title: "Immersive Spaces." },
   { img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931", title: "Infinite Solutions." }
 ];
 
