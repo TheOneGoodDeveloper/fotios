@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
 const steps = [
   { num: "1", title: "Book", desc: "Share your need and information with us." },
@@ -25,7 +26,7 @@ export default function StepsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={{ visible: { transition: { staggerChildren: 0.8 } } }}
+        variants={{ visible: { transition: { staggerChildren: 0.4 } } }}
         className="max-w-[1400px] mx-auto text-center"
       >
         <motion.span variants={itemVariants} className="uppercase tracking-[4px] text-text-secondary font-bold text-xs mb-8 block">
@@ -35,44 +36,31 @@ export default function StepsSection() {
           Follow 3 Easy Steps
         </motion.h2>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 z-10">
-          
-          {/* Animated Connecting Line (Desktop Only) */}
-          <div className="absolute top-[48px] left-[16.66%] w-[66.66%] h-1 bg-border hidden md:block -z-10">
-            <motion.div 
-              initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.6, ease: "linear", delay: 0.5 }}
-              className="h-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-            />
-          </div>
-
-          {/* Animated Connecting Line (Mobile Only) */}
-          <div className="absolute top-[5%] left-1/2 w-1 h-[90%] bg-border block md:hidden -z-10 -translate-x-1/2">
-            <motion.div 
-              initial={{ height: "0%" }}
-              whileInView={{ height: "100%" }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.6, ease: "linear", delay: 0.5 }}
-              className="w-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-            />
-          </div>
-
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 lg:gap-12 z-10">
           {steps.map((step, idx) => (
-            <motion.div 
-              key={idx} 
-              variants={itemVariants} 
-              whileHover="hover"
-              whileTap="hover"
-              className="relative flex flex-col items-center bg-bg-secondary cursor-pointer"
-            >
-              <motion.div variants={numberVariants} className="text-8xl font-heading font-bold text-text-primary mb-2 relative z-10 bg-bg-secondary px-6">
-                {step.num}
+            <React.Fragment key={idx}>
+              {/* Step Block */}
+              <motion.div 
+                variants={itemVariants} 
+                whileHover="hover"
+                whileTap="hover"
+                className="relative flex flex-col items-center flex-1 bg-bg-secondary cursor-pointer"
+              >
+                <motion.div variants={numberVariants} className="text-8xl font-heading font-bold text-text-primary mb-2 relative z-10 bg-bg-secondary px-6">
+                  {step.num}
+                </motion.div>
+                <h3 className="text-3xl font-heading font-bold text-text-primary mb-4">{step.title}</h3>
+                <p className="text-text-secondary text-lg max-w-[280px] leading-relaxed">{step.desc}</p>
               </motion.div>
-              <h3 className="text-3xl font-heading font-bold text-text-primary mb-4">{step.title}</h3>
-              <p className="text-text-secondary text-lg max-w-[280px] leading-relaxed">{step.desc}</p>
-            </motion.div>
+
+              {/* Directional Arrow */}
+              {idx < steps.length - 1 && (
+                <motion.div variants={itemVariants} className="text-gold flex-shrink-0 my-4 md:my-0 md:-mt-32">
+                  <ArrowRight size={48} strokeWidth={1.5} className="hidden md:block" />
+                  <ArrowDown size={40} strokeWidth={1.5} className="block md:hidden" />
+                </motion.div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </motion.div>
