@@ -37,16 +37,16 @@ export default function LandingHero() {
             alt={slides[current].title} 
             className="w-full h-full object-cover grayscale-[20%]"
           />
-          {/* Subtle overlay for contrast */}
-          <div className="absolute inset-0 bg-black/30"></div>
+          {/* Darker gradient overlay for white text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/20"></div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Clune-Style Stark Architectural Block */}
-      <div className="absolute bottom-0 left-0 md:left-16 lg:left-24 bg-white px-8 py-12 md:p-16 z-20 max-w-2xl w-full md:w-auto shadow-2xl">
+      {/* Clune-Style Transparent Architectural Block */}
+      <div className="absolute bottom-0 left-0 md:left-16 lg:left-24 bg-transparent px-8 py-12 md:p-16 z-20 max-w-2xl w-full md:w-auto">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-12 h-1 bg-gold"></div>
-          <span className="uppercase tracking-[4px] text-text-secondary font-bold text-xs">
+          <span className="uppercase tracking-[4px] text-white/80 font-bold text-xs shadow-sm">
             Fotios UAE
           </span>
         </div>
@@ -59,7 +59,7 @@ export default function LandingHero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-heading font-bold text-text-primary leading-[1.1] tracking-tight"
+              className="text-5xl md:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight drop-shadow-lg"
             >
               {slides[current].title}
             </motion.h1>
@@ -67,7 +67,7 @@ export default function LandingHero() {
         </div>
 
         <MagneticButton>
-          <a href="/projects" className="inline-block border border-text-primary px-8 py-4 uppercase tracking-widest text-xs font-bold text-text-primary hover:bg-text-primary hover:text-white transition-colors relative z-10">
+          <a href="/projects" className="inline-block border border-white/60 px-8 py-4 uppercase tracking-widest text-xs font-bold text-white hover:bg-white hover:text-black transition-colors relative z-10 backdrop-blur-sm bg-white/5">
             Explore Our Work
           </a>
         </MagneticButton>
