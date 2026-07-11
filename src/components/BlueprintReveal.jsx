@@ -31,7 +31,7 @@ export default function BlueprintReveal() {
       className="relative w-full h-[250vh] bg-[#050505] group"
     >
       {/* Sticky Screen - This locks into the viewport while you scroll through the 250vh parent */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden border-y border-border">
+      <div className="sticky top-0 w-full h-screen overflow-hidden border-y border-border" style={{ transform: 'translateZ(0)' }}>
         
         {/* 1. Base Layer: The Technical "Blueprint" */}
         <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center opacity-70"

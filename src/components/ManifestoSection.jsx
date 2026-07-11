@@ -17,7 +17,7 @@ export default function ManifestoSection() {
   return (
     <section ref={containerRef} className="relative h-[250vh] bg-[#050505] w-full z-10 border-y border-white/5">
       {/* Sticky container locks the view in place while scrolling */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ transform: 'translateZ(0)' }}>
         
         {/* Layer 1: The Base View */}
         <div className="absolute inset-0 flex items-center justify-center w-full h-full">
