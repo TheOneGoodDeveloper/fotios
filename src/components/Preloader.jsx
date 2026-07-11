@@ -72,7 +72,7 @@ export default function Preloader() {
               className="flex items-center mb-4"
             >
               <img 
-                src="/fotios-infinite-bg.png" 
+                src="/assets/fotios-infinite-bg.png" 
                 alt="Fotios Infinite Solutions" 
                 className="h-24 md:h-32 object-contain drop-shadow-2xl"
               />
