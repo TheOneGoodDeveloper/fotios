@@ -29,24 +29,24 @@ export default function Header() {
     >
       <MagneticButton>
         <a href="/" className="flex items-center">
-          <img src={logoImg} alt="Fotios Infinite Solutions" className="h-8 md:h-12 object-contain" />
+          <img src={logoImg} alt="Fotios Infinite Solutions" className="h-15 md:h-12 object-contain scale-125 md:scale-[1.35] origin-left" />
         </a>
       </MagneticButton>
       
       <nav className="hidden md:flex gap-12">
         <MagneticButton>
-          <a href="/" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">The Work</a>
+          <a href="#" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">The Work</a>
         </MagneticButton>
         <MagneticButton>
-          <a href="/services" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">Expertise</a>
+          <a href="#" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">Expertise</a>
         </MagneticButton>
         <MagneticButton>
-          <a href="/about" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">Vision</a>
+          <a href="#" className="uppercase tracking-widest text-[10px] md:text-xs font-bold text-white hover:text-gold transition-colors">Vision</a>
         </MagneticButton>
       </nav>
       
       <MagneticButton>
-        <a href="/contact" className="px-6 py-3 md:px-10 md:py-4 bg-white text-black text-[10px] md:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 rounded-sm">
+        <a href="#" className="px-6 py-3 md:px-10 md:py-4 bg-white text-black text-[10px] md:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 rounded-sm">
           Get a Quote
         </a>
       </MagneticButton>
