@@ -9,8 +9,9 @@ import ContactPage from './pages/ContactPage';
 import Preloader from './components/Preloader';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-
 import Header from './components/Header';
+import { OfficeProvider } from './context/OfficeContext';
+
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -34,7 +35,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <OfficeProvider>
       <CustomCursor />
       <Preloader />
       <Header />
@@ -48,6 +49,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </OfficeProvider>
   );
 }

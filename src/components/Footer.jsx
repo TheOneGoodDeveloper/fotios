@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import MagneticButton from './MagneticButton';
+import { useOffice } from '../hooks/useOffice';
 
 const LiveClock = ({ timeZone, label }) => {
   const [time, setTime] = useState('');
@@ -26,6 +27,8 @@ const LiveClock = ({ timeZone, label }) => {
 };
 
 export default function Footer() {
+  const { activeOffice } = useOffice();
+
   return (
     <footer className="bg-[#050505] flex flex-col justify-between pt-24 md:pt-32 px-4 md:px-16 overflow-hidden relative z-10 border-t border-white/5">
       
@@ -96,14 +99,14 @@ export default function Footer() {
           
           <div className="flex flex-col gap-6 text-sm text-white/60 mb-8">
             <div>
-              <span className="text-white/80 block font-bold mb-1">Fotios Infinite Solutions</span>
-              <p>Warehouse No-2 Jebel Ali<br/>Industrial Area - 1 Dubai<br/>UAE.</p>
+              <span className="text-white/80 block font-bold mb-1">{activeOffice.legalName}</span>
+              <p>{activeOffice.address}</p>
             </div>
             <div>
-              <a href="tel:+97145707825" className="hover:text-gold transition-colors block">+971 4 570 7825</a>
+              <a href={`tel:${activeOffice.phone.replace(/\s+/g, '')}`} className="hover:text-gold transition-colors block">{activeOffice.phone}</a>
             </div>
             <div>
-              <a href="mailto:info@fotiosuae.com" className="hover:text-gold transition-colors block">info@fotiosuae.com</a>
+              <a href={`mailto:${activeOffice.email}`} className="hover:text-gold transition-colors block">{activeOffice.email}</a>
             </div>
           </div>
 
@@ -122,7 +125,7 @@ export default function Footer() {
           <LiveClock timeZone="Asia/Riyadh" label="Riyadh, KSA" />
         </div>
         <div className="text-white/30 text-[10px] uppercase tracking-widest text-center md:text-right">
-          Fotios Engineering LLC © {new Date().getFullYear()}. All Rights Reserved.
+          {activeOffice.legalName} © {new Date().getFullYear()}. All Rights Reserved.
         </div>
       </div>
 

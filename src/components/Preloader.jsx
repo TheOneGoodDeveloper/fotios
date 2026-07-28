@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoImg from '../assets/fotios-infinite-bg.png';
+import { useOffice } from '../hooks/useOffice';
 
 const preloaderImages = [
   "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
@@ -13,6 +14,7 @@ const preloaderImages = [
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const { isTransitioning, activeOffice } = useOffice();
 
   useEffect(() => {
     // Extended to 3.5 seconds to allow for smooth cinematic crossfades
@@ -33,9 +35,9 @@ export default function Preloader() {
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {(isLoading || isTransitioning) && (
         <motion.div
-          key="preloader"
+          key={isTransitioning ? "transition" : "preloader"}
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0, 
@@ -79,14 +81,28 @@ export default function Preloader() {
               />
             </motion.div>
             
-            {/* Loading Bar */}
-            <div className="w-48 h-px bg-white/20 mt-8 relative overflow-hidden">
-              <motion.div 
-                initial={{ x: "-100%" }}
-                animate={{ x: "0%" }}
-                transition={{ duration: 2.3, ease: "easeInOut" }}
-                className="absolute top-0 left-0 h-full w-full bg-gold"
-              ></motion.div>
+            
+            {/* Loading Bar or Transition Text */}
+            <div className="flex flex-col items-center mt-8">
+              {isTransitioning ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  className="text-white/60 text-xs tracking-[0.3em] uppercase font-bold"
+                >
+                  Establishing connection to {activeOffice.city} HQ...
+                </motion.div>
+              ) : (
+                <div className="w-48 h-px bg-white/20 relative overflow-hidden">
+                  <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "0%" }}
+                    transition={{ duration: 2.3, ease: "easeInOut" }}
+                    className="absolute top-0 left-0 h-full w-full bg-gold"
+                  ></motion.div>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
